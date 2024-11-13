@@ -1,9 +1,13 @@
 // NavBar.js
-import React from 'react';
-import { Home, Search, PlusCircle, Info, Mail } from 'lucide-react';
-import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from './components/ui/navigation-menu';
-import { Button } from './components/ui/button';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Home, Search, PlusCircle, Info, Mail } from "lucide-react";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+} from "./components/ui/navigation-menu";
+import { Button } from "./components/ui/button";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -12,7 +16,9 @@ const NavBar = () => {
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center">
             <Home className="h-8 w-8 text-blue-600" />
-            <span className="ml-2 text-xl font-semibold text-gray-900">RanaHome</span>
+            <span className="ml-2 text-xl font-semibold text-gray-900">
+              RanaHome
+            </span>
           </div>
           <div className="hidden md:block">
             <NavigationMenu>
@@ -41,17 +47,14 @@ const NavBar = () => {
                     </Button>
                   </Link>
                 </NavigationMenuItem>
+
                 <NavigationMenuItem>
-                  <Button variant="ghost" className="flex items-center">
-                    <Info className="mr-2 h-4 w-4" />
-                    About
-                  </Button>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Button variant="ghost" className="flex items-center">
-                    <Mail className="mr-2 h-4 w-4" />
-                    Contact
-                  </Button>
+                  <Link to="about-contact">
+                    <Button variant="ghost" className="flex items-center">
+                      <Mail className="mr-2 h-4 w-4" />
+                      Contact
+                    </Button>
+                  </Link>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>

@@ -5,6 +5,7 @@ import NavBar from './navbar';
 import HomePage from './home';
 import SearchPage from './search';
 import PostListingForm from './form';
+import AboutContact from './contact';
 import './index.css';
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/post-listing" element={<PostListingForm />} />
+          <Route path="/about-contact" element={<AboutContact/>} />
         </Routes>
       </div>
     </Router>
