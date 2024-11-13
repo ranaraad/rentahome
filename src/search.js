@@ -5,7 +5,7 @@ import { Button } from "./components/ui/button";
 const propertyData = [
   {
     id: 1,
-    image: "https://via.placeholder.com/150",
+    image: '',
     title: "Cozy Apartment",
     location: "New York, NY",
     price: "$1200/month",

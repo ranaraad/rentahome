@@ -1,24 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavBar from './navbar';
 import HomePage from './home';
 import SearchPage from './search';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import PostListingForm from './form';
 import './index.css';
 
-function App() {
+const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/search" element={<SearchPage />} />
-      </Routes>
+      <div>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/post-listing" element={<PostListingForm />} />
+        </Routes>
+      </div>
     </Router>
   );
-}
+};
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-<SearchPage/>
-);
-
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
