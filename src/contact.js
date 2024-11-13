@@ -26,18 +26,18 @@ const AboutContact = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto my-12 p-8 bg-gradient-to-r from-white to-blue-50 shadow-lg rounded-lg">
+    <div className="max-w-4xl mx-auto my-12 p-8 shadow-lg rounded-lg">
       {/* Mission Statement */}
-      <h2 className="text-4xl font-bold text-center mb-6 text-blue-700">Our Mission</h2>
-      <p className="text-gray-700 text-center mb-10 leading-relaxed">
+      <h2 className="text-4xl font-bold text-center mb-6 text-violet-900">Our Mission</h2>
+      <p className="text-black text-center mb-10 leading-relaxed">
         At RanaHome, our mission is to empower displaced individuals by providing a platform that connects them with rental opportunities. We believe in making safe, affordable housing accessible to everyone, fostering a sense of community and belonging in each home.
       </p>
 
       {/* Contact Form */}
       <div className="bg-white p-6 shadow-lg rounded-lg">
-        <h3 className="text-2xl font-bold text-center text-blue-700 mb-4">Contact Us</h3>
+        <h3 className="text-2xl font-bold text-center text-violet-900 mb-4">Contact Us</h3>
         {successMessage && (
-          <div className="mb-6 p-3 bg-green-100 border-l-4 border-green-500 text-green-700 rounded">
+          <div className="mb-6 p-3 bg-violet-100 border-l-4 border-violet-500 text-violet-700 rounded">
             {successMessage}
           </div>
         )}
@@ -78,17 +78,17 @@ const AboutContact = () => {
             />
           </div>
 
-          <Button type="submit" className="w-full py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-all shadow-md">
+          <Button type="submit" className="w-full py-3 text-white font-semibold rounded-md bg-violet-700 hover:bg-violet-800 transition-all shadow-md">
             Send Message
           </Button>
         </form>
       </div>
 
       {/* Social Media Links */}
-      <div className="flex justify-center space-x-4 mt-8 text-blue-600">
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-800">Facebook</a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-800">Twitter</a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-800">Instagram</a>
+      <div className="flex justify-center space-x-4 mt-8 text-violet-600">
+        <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-violet-900">Facebook</a>
+        <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-violet-900">Twitter</a>
+        <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-violet-900">Instagram</a>
       </div>
     </div>
   );

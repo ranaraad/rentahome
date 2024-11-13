@@ -2,32 +2,34 @@ import React, { useState } from "react";
 import { Input } from "./components/ui/input";
 import { Button } from "./components/ui/button";
 import PropertyCard from "./propertyCard";
-
+import prop1 from "./propertypictures/prop1.webp";
+import prop2 from "./propertypictures/prop2.webp";
+import prop3 from "./propertypictures/prop3.jpeg";
 export const propertyData = [
   {
     id: 1,
-    image: '',
+    image: prop1,
     title: "Cozy Apartment",
-    location: "New York, NY",
+    location: "Ashrafieh",
     price: "$1200/month",
     bedrooms: 2,
     propertyType: "Apartment",
   },
   {
     id: 2,
-    image: "https://via.placeholder.com/150",
+    image: prop2,
     title: "Spacious House",
-    location: "Los Angeles, CA",
+    location: "Jdeideh",
     price: "$2500/month",
     bedrooms: 4,
     propertyType: "House",
   },
   {
     id: 3,
-    image: "https://via.placeholder.com/150",
+    image: prop3,
     title: "Modern Studio",
-    location: "San Francisco, CA",
-    price: "$1800/month",
+    location: "Baabda",
+    price: "$800/month",
     bedrooms: 1,
     propertyType: "Studio",
   },
@@ -36,8 +38,8 @@ export const propertyData = [
 const SearchPage = () => {
   const [price, setPrice] = useState(300);
   return (
-    <div className="min-h-screen bg-gray-50 px-4 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-bold text-center mt-8">Search Listings</h1>
+    <div className="min-h-screen px-4 sm:px-6 lg:px-8">
+      <h1 className="text-3xl font-bold text-center mt-8 text-violet-900">Search Listings</h1>
       <div className="mt-12">
         <div className="flex flex-wrap justify-center gap-4 mb-6">
           <div className="w-48">
@@ -46,7 +48,7 @@ const SearchPage = () => {
               type="range"
               id="priceRange"
               min="300"
-              max="2000"
+              max="3000"
               step="100"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
@@ -64,10 +66,10 @@ const SearchPage = () => {
               <option value="dekweneh">Dekweneh</option>
             </select>
           </div>
-          <Input
+          <Input 
             type="number"
             placeholder="Bedrooms"
-            className="w-48"
+            className="w-48 rounded-md border-0 py-2 px-3 text-slate-500 ring-1 ring-gray-200 bg-slate-50"
             min="1"
             max="4"
             onKeyDown={(e) => {
@@ -86,7 +88,7 @@ const SearchPage = () => {
               <option value="studio">Studio</option>
             </select>
           </div>
-          <Button className="bg-blue-600 hover:bg-blue-700">
+          <Button className="bg-violet-700 hover:bg-violet-800">
             Apply Filters
           </Button>
         </div>

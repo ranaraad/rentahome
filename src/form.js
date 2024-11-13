@@ -39,12 +39,12 @@ const PostListingForm = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto my-12 p-8 bg-gradient-to-r from-white to-blue-50 shadow-lg rounded-lg">
-      <h2 className="text-3xl font-bold mb-6 text-center text-blue-700">
+    <div className="max-w-4xl mx-auto my-12 p-8 shadow-lg rounded-lg">
+      <h2 className="text-3xl font-bold mb-6 text-center text-violet-900">
         Post a Rental Listing
       </h2>
       {successMessage && (
-        <div className="mb-6 p-3 bg-green-100 border-l-4 border-green-500 text-green-700 rounded">
+        <div className="mb-6 p-3 bg-violet-100 border-l-4 border-violet-500 text-violet-700 rounded">
           {successMessage}
         </div>
       )}
@@ -67,7 +67,7 @@ const PostListingForm = () => {
             name="description"
             value={formData.description}
             onChange={handleChange}
-            className="border rounded-md p-3 shadow-sm focus:ring-2 focus:ring-blue-400"
+            className="border rounded-md p-3 shadow-sm focus:ring-2 focus:ring-violet-400"
             placeholder="Describe the property in detail"
             rows="4"
             required
@@ -81,7 +81,7 @@ const PostListingForm = () => {
             name="location"
             value={formData.location}
             onChange={handleChange}
-            className="w-48 rounded-md border-0 py-2 px-3 text-slate-500 ring-1 ring-gray-200 bg-slate-50"
+            className="w-48 rounded-md border-0 py-2 px-3 text-slate-500 ring-1 ring-gray-200 bg-violet-50"
             required
           >
             <option value="" disabled selected>
@@ -101,7 +101,7 @@ const PostListingForm = () => {
                 type="range"
                 name="price"
                 min="300"
-                max="5000"
+                max="3000"
                 step="100"
                 value={formData.price}
                 onChange={handleChange}
@@ -116,7 +116,7 @@ const PostListingForm = () => {
             name="propertyType"
             value={formData.propertyType}
             onChange={handleChange}
-            className="w-48 rounded-md border-0 py-2 px-3 text-slate-500 ring-1 ring-gray-200 bg-slate-50"
+            className="w-48 rounded-md border-0 py-2 px-3 text-slate-500 ring-1 ring-gray-200 bg-violet-50"
             required
           >
             <option value="" disabled selected>
@@ -135,11 +135,11 @@ const PostListingForm = () => {
             type="file"
             multiple
             onChange={handleImageUpload}
-            className="p-2 border rounded-md file:bg-blue-50 file:text-blue-700 file:rounded file:border-0 file:px-4 file:py-2"
+            className="p-2 border rounded-md file:bg-violet-50 file:text-violet-700 file:rounded file:border-0 file:px-4 file:py-2"
           />
         </div>
 
-        <Button type="submit" className="w-full py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-all shadow-md">
+        <Button type="submit" className="w-full py-3 bg-violet-700 hover:bg-violet-800 text-white font-semibold rounded-md transition-all shadow-md">
           Submit Listing
         </Button>
       </form>
