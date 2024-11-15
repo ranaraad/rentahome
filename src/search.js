@@ -2,38 +2,8 @@ import React, { useState } from "react";
 import { Input } from "./components/ui/input";
 import { Button } from "./components/ui/button";
 import PropertyCard from "./propertyCard";
-import prop1 from "./propertypictures/prop1.webp";
-import prop2 from "./propertypictures/prop2.webp";
-import prop3 from "./propertypictures/prop3.jpeg";
-export const propertyData = [
-  {
-    id: 1,
-    image: prop1,
-    title: "Cozy Apartment",
-    location: "Ashrafieh",
-    price: "$1200/month",
-    bedrooms: 2,
-    propertyType: "Apartment",
-  },
-  {
-    id: 2,
-    image: prop2,
-    title: "Spacious House",
-    location: "Jdeideh",
-    price: "$2500/month",
-    bedrooms: 4,
-    propertyType: "House",
-  },
-  {
-    id: 3,
-    image: prop3,
-    title: "Modern Studio",
-    location: "Baabda",
-    price: "$800/month",
-    bedrooms: 1,
-    propertyType: "Studio",
-  },
-];
+import { propertyData } from "./propertyCard";
+
 
 const SearchPage = () => {
   const [price, setPrice] = useState(300);

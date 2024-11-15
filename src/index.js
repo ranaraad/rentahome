@@ -9,13 +9,16 @@ import AboutContact from './contact';
 import './index.css';
 
 const App = () => {
+
+
+
   return (
     <Router>
       <div>
         <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/search" element={<SearchPage />} />
+          <Route path="/search" element={<SearchPage/>} />
           <Route path="/post-listing" element={<PostListingForm />} />
           <Route path="/about-contact" element={<AboutContact/>} />
         </Routes>

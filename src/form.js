@@ -10,6 +10,9 @@ const PostListingForm = () => {
     price: 300, // Default price for slider
     propertyType: "",
     images: [],
+    fullName: "",
+    phone: "",
+    email: ""
   });
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -24,6 +27,8 @@ const PostListingForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+
     setSuccessMessage("Property listed successfully!");
     setFormData({
       title: "",
@@ -32,10 +37,20 @@ const PostListingForm = () => {
       price: 300, // Reset price to default
       propertyType: "",
       images: [],
+      fullName: "",
+      phone: "",
+      email: ""
     });
     setTimeout(() => {
       setSuccessMessage('');
     }, 4000);
+  };
+
+  const handlePhoneChange = (e) => {
+    const { value } = e.target;
+    // Remove any non-numeric characters
+    const numericValue = value.replace(/\D/g, "");
+    setFormData({ ...formData, phone: numericValue });
   };
 
   return (
@@ -49,6 +64,46 @@ const PostListingForm = () => {
         </div>
       )}
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Landlord Full Name */}
+        <div className="flex flex-col space-y-2">
+          <label className="text-gray-700 font-medium">Full Name *</label>
+          <Input
+            type="text"
+            name="fullName"
+            value={formData.fullName}
+            onChange={handleChange}
+            placeholder="Enter your full name"
+            required
+          />
+        </div>
+
+        {/* Landlord Phone Number */}
+        <div className="flex flex-col space-y-2">
+          <label className="text-gray-700 font-medium">Phone Number *</label>
+          <Input
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handlePhoneChange}
+            placeholder="Enter your phone number"
+            required
+          />
+        </div>
+
+        {/* Landlord Email */}
+        <div className="flex flex-col space-y-2">
+          <label className="text-gray-700 font-medium">Email *</label>
+          <Input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter your email address"
+            required
+          />
+        </div>
+
+        {/* Title */}
         <div className="flex flex-col space-y-2">
           <label className="text-gray-700 font-medium">Title *</label>
           <Input
@@ -61,6 +116,7 @@ const PostListingForm = () => {
           />
         </div>
 
+        {/* Description */}
         <div className="flex flex-col space-y-2">
           <label className="text-gray-700 font-medium">Description *</label>
           <textarea
@@ -84,7 +140,7 @@ const PostListingForm = () => {
             className="w-48 rounded-md border-0 py-2 px-3 text-slate-500 ring-1 ring-gray-200 bg-violet-50"
             required
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               Select a location
             </option>
             <option value="Dekeweneh">Dekeweneh</option>
@@ -95,19 +151,19 @@ const PostListingForm = () => {
         </div>
 
         {/* Price Slider */}
-            <div className="w-48">
-              <h2 className="text-slate-500">Price Range: Up to {formData.price}</h2>
-              <input
-                type="range"
-                name="price"
-                min="300"
-                max="3000"
-                step="100"
-                value={formData.price}
-                onChange={handleChange}
-                className="w-full mt-1"
-              />
-            </div>
+        <div className="w-48">
+          <h2 className="text-slate-500">Price Range: Up to {formData.price}</h2>
+          <input
+            type="range"
+            name="price"
+            min="300"
+            max="3000"
+            step="100"
+            value={formData.price}
+            onChange={handleChange}
+            className="w-full mt-1"
+          />
+        </div>
 
         {/* Property Type Dropdown */}
         <div className="flex flex-col space-y-2">
@@ -119,7 +175,7 @@ const PostListingForm = () => {
             className="w-48 rounded-md border-0 py-2 px-3 text-slate-500 ring-1 ring-gray-200 bg-violet-50"
             required
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               Select property type
             </option>
             <option value="House">House</option>
