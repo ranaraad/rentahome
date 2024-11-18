@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState} from "react";
 import { Search } from "lucide-react";
 import { Input } from "./components/ui/input";
 import { Button } from "./components/ui/button";
@@ -6,6 +6,19 @@ import { propertyData } from "./propertyCard";
 import PropertyCard from "./propertyCard";
 
 const HomePage = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredProperties, setFilteredProperties] = useState(propertyData);
+
+  const handleInputChange = (e) => {
+    const value = e.target.value.toLowerCase();
+    setSearchQuery(value);
+
+    const filtered = propertyData.filter((property) =>
+      property.location.toLowerCase().includes(value)
+    );
+    setFilteredProperties(filtered);
+  };
+
   return (
     <div>
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -24,6 +37,8 @@ const HomePage = () => {
           <div className="flex gap-2">
             <div className="flex-1">
               <Input
+                value={searchQuery}
+                onChange={handleInputChange}
                 placeholder="Search for housing in your desired location..."
                 className="w-full"
               />
@@ -34,8 +49,9 @@ const HomePage = () => {
             </Button>
           </div>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-          {propertyData.map((property) => (
+          {filteredProperties.map((property) => (
             <PropertyCard key={property.id} property={property} />
           ))}
         </div>

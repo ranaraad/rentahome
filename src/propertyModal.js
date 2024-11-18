@@ -14,6 +14,7 @@ const PropertyModal = ({ property, isOpen, onClose, onInquire, inquiryMessage })
         />
         <h2 className="text-2xl font-bold text-violet-900">{property.title}</h2>
         <p className="text-gray-700 mt-2">Location: {property.location}</p>
+        <p className="text-gray-600">Property Type: {property.propertyType}</p>
         <p className="text-gray-700">Price: {property.price}</p>
         <p className="text-gray-700">Bedrooms: {property.bedrooms}</p>
         <p className="text-gray-700 mt-2">Landlord's Name: {property.landlord.name}</p>
