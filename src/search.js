@@ -28,7 +28,7 @@ const SearchPage = () => {
           <div>
             <select className="w-48 rounded-md border-0 py-2 px-3 text-slate-500 ring-1 ring-gray-200 bg-slate-50">
               <option value="" disabled selected>
-                Location
+                Select Location
               </option>
               <option value="jdeideh">Jdeideh</option>
               <option value="baabda">Baabda</option>
@@ -62,7 +62,7 @@ const SearchPage = () => {
             Apply Filters
           </Button>
         </div>
-        {/* Display property cards */}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {propertyData.map((property) => (
             <PropertyCard key={property.id} property={property} />

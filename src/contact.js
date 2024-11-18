@@ -27,13 +27,11 @@ const AboutContact = () => {
 
   return (
     <div className="max-w-4xl mx-auto my-12 p-8 shadow-lg rounded-lg">
-      {/* Mission Statement */}
       <h2 className="text-4xl font-bold text-center mb-6 text-violet-900">Our Mission</h2>
       <p className="text-black text-center mb-10 leading-relaxed">
         At RanaHome, our mission is to empower displaced individuals by providing a platform that connects them with rental opportunities. We believe in making safe, affordable housing accessible to everyone, fostering a sense of community and belonging in each home.
       </p>
 
-      {/* Contact Form */}
       <div className="bg-white p-6 shadow-lg rounded-lg">
         <h3 className="text-2xl font-bold text-center text-violet-900 mb-4">Contact Us</h3>
         {successMessage && (
@@ -84,7 +82,6 @@ const AboutContact = () => {
         </form>
       </div>
 
-      {/* Social Media Links */}
       <div className="flex justify-center space-x-4 mt-8 text-violet-600">
         <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-violet-900">Facebook</a>
         <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-violet-900">Twitter</a>

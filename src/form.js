@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input } from "./components/ui/input";
+import { propertyData } from "./propertyCard";
 import { Button } from "./components/ui/button";
 
 const PostListingForm = () => {
@@ -7,50 +7,67 @@ const PostListingForm = () => {
     title: "",
     description: "",
     location: "",
-    price: 300, // Default price for slider
+    price: 300,
     propertyType: "",
     images: [],
     fullName: "",
     phone: "",
-    email: ""
+    email: "",
+    bedrooms: "",
   });
   const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, value, files } = e.target;
+    if (name === "images") {
+      setFormData({ ...formData, [name]: files });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
-  const handleImageUpload = (e) => {
-    setFormData({ ...formData, images: [...e.target.files] });
+  const handletelchange = (e) => {
+    const { value } = e.target;
+    const numval = value.replace(/\D/g, "");
+    setFormData({ ...formData, phone: numval });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const newProperty = {
+      id: Date.now(),
+      image: formData.images[0] ? URL.createObjectURL(formData.images[0]) : "",
+      title: formData.title,
+      location: formData.location,
+      price: `$${formData.price}/month`,
+      bedrooms: formData.bedrooms,
+      propertyType: formData.propertyType,
+      description: formData.description,
+      landlord: {
+        name: formData.fullName,
+        phone: formData.phone,
+        email: formData.email,
+      },
+    };
+
+    propertyData.push(newProperty);
 
     setSuccessMessage("Property listed successfully!");
+    setTimeout(() => setSuccessMessage(""), 4000);
+
     setFormData({
       title: "",
       description: "",
       location: "",
-      price: 300, // Reset price to default
+      price: 300,
       propertyType: "",
       images: [],
       fullName: "",
       phone: "",
-      email: ""
+      email: "",
+      bedrooms: "",
     });
-    setTimeout(() => {
-      setSuccessMessage('');
-    }, 4000);
-  };
-
-  const handlePhoneChange = (e) => {
-    const { value } = e.target;
-    // Remove any non-numeric characters
-    const numericValue = value.replace(/\D/g, "");
-    setFormData({ ...formData, phone: numericValue });
   };
 
   return (
@@ -64,138 +81,165 @@ const PostListingForm = () => {
         </div>
       )}
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Landlord Full Name */}
-        <div className="flex flex-col space-y-2">
-          <label className="text-gray-700 font-medium">Full Name *</label>
-          <Input
+        <div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Full Name
+            </label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleChange}
+              required
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handletelchange}
+              required
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+            />
+          </div>
+          <label className="block text-sm font-medium text-gray-700">
+            Title
+          </label>
+          <input
             type="text"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
-            placeholder="Enter your full name"
-            required
-          />
-        </div>
-
-        {/* Landlord Phone Number */}
-        <div className="flex flex-col space-y-2">
-          <label className="text-gray-700 font-medium">Phone Number *</label>
-          <Input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handlePhoneChange}
-            placeholder="Enter your phone number"
-            required
-          />
-        </div>
-
-        {/* Landlord Email */}
-        <div className="flex flex-col space-y-2">
-          <label className="text-gray-700 font-medium">Email *</label>
-          <Input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Enter your email address"
-            required
-          />
-        </div>
-
-        {/* Title */}
-        <div className="flex flex-col space-y-2">
-          <label className="text-gray-700 font-medium">Title *</label>
-          <Input
-            type="text"
+            id="title"
             name="title"
             value={formData.title}
             onChange={handleChange}
-            placeholder="Enter the title of the property"
             required
+            className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
           />
         </div>
-
-        {/* Description */}
-        <div className="flex flex-col space-y-2">
-          <label className="text-gray-700 font-medium">Description *</label>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Description
+          </label>
           <textarea
+            id="description"
             name="description"
             value={formData.description}
             onChange={handleChange}
-            className="border rounded-md p-3 shadow-sm focus:ring-2 focus:ring-violet-400"
-            placeholder="Describe the property in detail"
-            rows="4"
             required
+            className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
           ></textarea>
         </div>
-
-        {/* Location Dropdown */}
-        <div className="flex flex-col space-y-2">
-          <label className="text-gray-700 font-medium">Location *</label>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Property Location
+          </label>
           <select
+            id="location"
             name="location"
             value={formData.location}
             onChange={handleChange}
-            className="w-48 rounded-md border-0 py-2 px-3 text-slate-500 ring-1 ring-gray-200 bg-violet-50"
             required
+            className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
           >
-            <option value="" disabled>
-              Select a location
-            </option>
-            <option value="Dekeweneh">Dekeweneh</option>
-            <option value="Ashrafieh">Ashrafieh</option>
-            <option value="Baabda">Baabda</option>
-            <option value="Jdeideh">Jdeideh</option>
+            <option value="">Select Property Location</option>
+            <option value="jdeideh">Jdeideh</option>
+            <option value="baabda">Baabda</option>
+            <option value="ashrafieh">Ashrafieh</option>
+            <option value="dekweneh">Dekweneh</option>
           </select>
         </div>
-
-        {/* Price Slider */}
-        <div className="w-48">
-          <h2 className="text-slate-500">Price Range: Up to {formData.price}</h2>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Number of Bedrooms
+          </label>
+          <input
+            type="number"
+            id="bedrooms"
+            name="bedrooms"
+            min="1"
+            max="4"
+            value={formData.bedrooms}
+            onChange={handleChange}
+            required
+            className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Price ($/month)
+          </label>
           <input
             type="range"
+            id="price"
             name="price"
             min="300"
             max="3000"
             step="100"
             value={formData.price}
             onChange={handleChange}
-            className="w-full mt-1"
+            required
+            className="mt-1 block w-full"
           />
+          <div className="text-sm mt-2 text-gray-600">
+            Selected Price: ${formData.price}/month
+          </div>
         </div>
-
-        {/* Property Type Dropdown */}
-        <div className="flex flex-col space-y-2">
-          <label className="text-gray-700 font-medium">Property Type *</label>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Property Type
+          </label>
           <select
+            id="propertyType"
             name="propertyType"
             value={formData.propertyType}
             onChange={handleChange}
-            className="w-48 rounded-md border-0 py-2 px-3 text-slate-500 ring-1 ring-gray-200 bg-violet-50"
             required
+            className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
           >
-            <option value="" disabled>
-              Select property type
-            </option>
-            <option value="House">House</option>
-            <option value="Apartment">Apartment</option>
-            <option value="Studio">Studio</option>
+            <option value="">Select Property Type</option>
+            <option value="house">House</option>
+            <option value="apartment">Apartment</option>
+            <option value="studio">Studio</option>
           </select>
         </div>
-
-        {/* Image Upload */}
-        <div className="flex flex-col space-y-2">
-          <label className="text-gray-700 font-medium">Upload Images</label>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Images
+          </label>
           <input
             type="file"
+            id="images"
+            name="images"
+            onChange={handleChange}
             multiple
-            onChange={handleImageUpload}
             className="p-2 border rounded-md file:bg-violet-50 file:text-violet-700 file:rounded file:border-0 file:px-4 file:py-2"
           />
         </div>
-
-        <Button type="submit" className="w-full py-3 bg-violet-700 hover:bg-violet-800 text-white font-semibold rounded-md transition-all shadow-md">
+        <Button
+          type="submit"
+          className="w-full py-3 bg-violet-700 hover:bg-violet-800 text-white font-semibold rounded-md transition-all shadow-md"
+        >
           Submit Listing
         </Button>
       </form>

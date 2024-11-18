@@ -34,7 +34,6 @@ const PropertyModal = ({ property, isOpen, onClose, onInquire, inquiryMessage })
           Close
         </button>
 
-        {/* Display the inquiry message if it's set */}
         {inquiryMessage && (
           <div className="mt-4 p-3 bg-violet-100 text-violet-700 rounded">
             {inquiryMessage}

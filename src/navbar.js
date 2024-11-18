@@ -1,4 +1,3 @@
-// NavBar.js
 import React from "react";
 import { Home, Search, PlusCircle, Mail } from "lucide-react";
 import {
