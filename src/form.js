@@ -9,7 +9,7 @@ const PostListingForm = () => {
     location: "",
     price: 300,
     propertyType: "",
-    images: [],
+    images: null,
     fullName: "",
     phone: "",
     email: "",
@@ -20,7 +20,7 @@ const PostListingForm = () => {
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "images") {
-      setFormData({ ...formData, [name]: files });
+      setFormData({ ...formData, [name]: files[0] }); 
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -37,7 +37,7 @@ const PostListingForm = () => {
 
     const newProperty = {
       id: Date.now(),
-      image: formData.images[0] ? URL.createObjectURL(formData.images[0]) : "",
+      image: formData.images ? URL.createObjectURL(formData.images) : "",
       title: formData.title,
       location: formData.location,
       price: `$${formData.price}/month`,
@@ -62,7 +62,7 @@ const PostListingForm = () => {
       location: "",
       price: 300,
       propertyType: "",
-      images: [],
+      images: null,
       fullName: "",
       phone: "",
       email: "",
@@ -82,48 +82,48 @@ const PostListingForm = () => {
       )}
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Full Name
-            </label>
-            <input
-              type="text"
-              id="fullName"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              required
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Phone Number
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handletelchange}
-              required
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
-            />
-          </div>
+          <label className="block text-sm font-medium text-gray-700">
+            Full Name
+          </label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            value={formData.fullName}
+            onChange={handleChange}
+            required
+            className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handletelchange}
+            required
+            className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+          />
+        </div>
+        <div>
           <label className="block text-sm font-medium text-gray-700">
             Title
           </label>
@@ -225,14 +225,13 @@ const PostListingForm = () => {
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">
-            Images
+            Image
           </label>
           <input
             type="file"
             id="images"
             name="images"
             onChange={handleChange}
-            multiple
             className="p-2 border rounded-md file:bg-violet-50 file:text-violet-700 file:rounded file:border-0 file:px-4 file:py-2"
           />
         </div>

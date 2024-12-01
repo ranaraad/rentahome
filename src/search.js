@@ -55,7 +55,7 @@ const SearchPage = () => {
       <div className="mt-12">
         <div className="flex flex-wrap justify-center gap-4 mb-6">
           <div className="w-48">
-            <h2 className="text-slate-500">Price Range: Up to {price}</h2>
+            <h2 className="text-slate-500">Price Range: Up to ${price}</h2>
             <input
               type="range"
               id="priceRange"
