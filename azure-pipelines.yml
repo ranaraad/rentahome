@@ -4,7 +4,7 @@ trigger:
 pool: 
   name: RanaRaad-pool
   demands:
-    - agent.name -equals RanaRaad-VM
+    - agent.name -equals ranaraad-agent
 
 steps:
 - task: NodeTool@0
