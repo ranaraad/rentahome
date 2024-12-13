@@ -24,4 +24,5 @@ steps:
     appName: 'RanaRaad-WebApp'
     deployToSlotOrASE: true
     resourceGroupName: 'RanaRaad-RG'
+    package: '$(System.DefaultWorkingDirectory)/build'
   displayName: 'Azure Web App Deploy: RanaRaad-WebApp'
