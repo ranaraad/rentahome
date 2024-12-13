@@ -17,12 +17,3 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'RanaRaad-ServiceConnection'
-    appType: 'webApp'
-    appName: 'RanaRaad-WebApp'
-    deployToSlotOrASE: true
-    resourceGroupName: 'RanaRaad-RG'
-    package: '$(System.DefaultWorkingDirectory)/build'
-  displayName: 'Azure Web App Deploy: RanaRaad-WebApp'
