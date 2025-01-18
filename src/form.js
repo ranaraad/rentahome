@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { propertyData } from "./propertyCard";
 import { Button } from "./components/ui/button";
-//jj
+
 
 const PostListingForm = () => {
   const [formData, setFormData] = useState({
