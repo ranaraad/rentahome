@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/rentahome/static/css/main.e1a0b83e.css",
-    "main.js": "/rentahome/static/js/main.1c774a31.js",
+    "main.css": "/rentahome/static/css/main.09b76d4d.css",
+    "main.js": "/rentahome/static/js/main.a50651e4.js",
     "static/media/prop1.webp": "/rentahome/static/media/prop1.e05720c57d10c6d2476a.webp",
     "static/media/prop3.jpeg": "/rentahome/static/media/prop3.7cd320160e15819608b4.jpeg",
     "static/media/prop2.webp": "/rentahome/static/media/prop2.8b86dc1f09bbf9bbe5f1.webp",
     "index.html": "/rentahome/index.html",
-    "main.e1a0b83e.css.map": "/rentahome/static/css/main.e1a0b83e.css.map",
-    "main.1c774a31.js.map": "/rentahome/static/js/main.1c774a31.js.map"
+    "main.09b76d4d.css.map": "/rentahome/static/css/main.09b76d4d.css.map",
+    "main.a50651e4.js.map": "/rentahome/static/js/main.a50651e4.js.map"
   },
   "entrypoints": [
-    "static/css/main.e1a0b83e.css",
-    "static/js/main.1c774a31.js"
+    "static/css/main.09b76d4d.css",
+    "static/js/main.a50651e4.js"
   ]
 }
